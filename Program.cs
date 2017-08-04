@@ -9,9 +9,14 @@
 	{
 		public string UnknownBarcode { get; }
 
-		public ProductNotFoundMessage(string unknownBarcode)
+		private ProductNotFoundMessage(string unknownBarcode)
 		{
 			UnknownBarcode = unknownBarcode;
+		}
+
+		public static ProductNotFoundMessage For(string unknownBarcode)
+		{
+			return new ProductNotFoundMessage(unknownBarcode);
 		}
 
 		public override string ToString() => $"Product not found for: {UnknownBarcode}";
@@ -26,9 +31,14 @@
 	{
 		public Price Price { get; }
 
-		public PriceMessage(Price price)
+		private PriceMessage(Price price)
 		{
 			Price = price;
+		}
+
+		public static PriceMessage For(Price inCents)
+		{
+			return new PriceMessage(inCents);
 		}
 
 		public override string ToString() => $"Price value is: {Price.DollarValue()}";
@@ -71,9 +81,9 @@
 		public static void Main()
 		{
 			IDisplayOnConsole console = new Console();
-			console.Display(new ProductNotFoundMessage(SomeUnknownBarcode));
+			console.Display(ProductNotFoundMessage.For(SomeUnknownBarcode));
 			console.Display(new EmptyBarCodeMessage());
-			console.Display(new PriceMessage(Price.InCents(255)));
+			console.Display(PriceMessage.For(Price.InCents(255)));
 			System.Console.ReadKey();
 		}
 	}
