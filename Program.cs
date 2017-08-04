@@ -70,10 +70,10 @@
 
 		public static void Main()
 		{
-			IDisplayOnConsole consoleDisplay = new Console();
-			consoleDisplay.Display(new ProductNotFoundMessage(SomeUnknownBarcode));
-			consoleDisplay.Display(new EmptyBarCodeMessage());
-			consoleDisplay.Display(new PriceMessage(Price.InCents(255)));
+			IDisplayOnConsole console = new Console();
+			console.Display(new ProductNotFoundMessage(SomeUnknownBarcode));
+			console.Display(new EmptyBarCodeMessage());
+			console.Display(new PriceMessage(Price.InCents(255)));
 			System.Console.ReadKey();
 		}
 	}
