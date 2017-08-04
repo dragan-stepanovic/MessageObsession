@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MessageObsession
+﻿namespace MessageObsession
 {
 	public abstract class Message
 	{
@@ -53,15 +51,15 @@ namespace MessageObsession
 		public int DollarValue() => _value;
 	}
 
-	public class ConsoleDisplay : IAmDisplay
+	public class Console : IDisplayOnConsole
 	{
 		public void Display(Message message)
 		{
-			Console.WriteLine(message);
+			System.Console.WriteLine(message);
 		}
 	}
 
-	public interface IAmDisplay
+	public interface IDisplayOnConsole
 	{
 		void Display(Message message);
 	}
@@ -72,11 +70,11 @@ namespace MessageObsession
 
 		public static void Main()
 		{
-			IAmDisplay consoleDisplay = new ConsoleDisplay();
+			IDisplayOnConsole consoleDisplay = new Console();
 			consoleDisplay.Display(new ProductNotFoundMessage(SomeUnknownBarcode));
 			consoleDisplay.Display(new EmptyBarCodeMessage());
 			consoleDisplay.Display(new PriceMessage(Price.InCents(255)));
-			Console.ReadKey();
+			System.Console.ReadKey();
 		}
 	}
 }
