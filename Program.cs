@@ -61,7 +61,7 @@
 		public int DollarValue() => _value;
 	}
 
-	public class Console : IDisplayOnConsole
+	public class Console : IDisplayMessage
 	{
 		public void Display(Message message)
 		{
@@ -69,7 +69,7 @@
 		}
 	}
 
-	public interface IDisplayOnConsole
+	public interface IDisplayMessage
 	{
 		void Display(Message message);
 	}
@@ -80,7 +80,7 @@
 
 		public static void Main()
 		{
-			IDisplayOnConsole console = new Console();
+			IDisplayMessage console = new Console();
 			console.Display(ProductNotFoundMessage.For(SomeUnknownBarcode));
 			console.Display(new EmptyBarCodeMessage());
 			console.Display(PriceMessage.For(Price.InCents(255)));
