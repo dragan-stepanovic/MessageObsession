@@ -18,5 +18,5 @@ Besides removing primitive obsession, I find this approach to achieve context in
 An interesting repercussion of this is that if I have manual stubs/mocks that are faking IDisplayMessage, I wouldn't have to change them when I add new types of messages. An opposite case, where we expand the interface and have to add implementations in all fakes, I use as a code smell to detect unstable interfaces. Another example of listening to the tests.
 And also, for the same reasons stated above, this interface adheres to Open Closed Principle.
 
-One more thing that I see as advantage, perhaphs, is that we get reusability in terms of messages that we could send out to other objects (which we don't have with separate display messages, since those are tightly coupled to ConsoleDisplay).
+One more thing that I see as advantage, perhaps, is that we get reusability in terms of messages that we could send out to other objects (which we don't have with separate display messages, since those are tightly coupled to ConsoleDisplay).
 Also the knowledge of formatting is encapsulated in the messages. In case we need different formatting, for different types of displays, there could be a separate set of Messages (with their own formatting) in the other other namespaces and outgoing adapters (in terms of Ports and Adapters architecture).
